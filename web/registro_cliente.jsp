@@ -1,9 +1,6 @@
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
+
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -48,6 +45,17 @@ and open the template in the editor.
                 <tr>
                     <td>Contraseña: </td>
                     <td><input type="password" name="contrasenia" value="" size="20" /></td>
+                </tr>
+                <%
+                    int aleatorio = ((int) (Math.random() * (3 - 1 + 1) + 1));
+                %>
+                <tr>
+                    <td>
+                        <img src="imagenes/<%= aleatorio + ".png"%>" /> 
+                    </td>
+                    <td>Escribe el texto de la imagen.<br/>
+                        <input type="text" name='captcha' size="20">
+                    </td>
                 </tr>
             </table>
             <br>

@@ -25,7 +25,7 @@
                     <table>
                         <tr>
                             <td>Usuario: </td>
-                            <td><%= request.getAttribute("usuario") %></td>
+                            <td>${usuario}</td>
                         </tr>
                     </table>
                 </td> 
