@@ -1,12 +1,20 @@
 package mx.com.develop.store.controller;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
-public class RegistroCliente {
+@WebServlet(name = "RegistroCliente", urlPatterns = {"/registro_cliente.view"})
+public class RegistroCliente extends HttpServlet {
 
-    protected void doXXX() throws ServletException, IOException {       
-        try {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		response.setContentType("text/html;charset=UTF-8");
+		PrintWriter out = response.getWriter();
+		try {
             out.println("<html>\n" + "    <head>\n"
                     + "        <meta http-equiv='Content-Type' content='text/html; charset=UTF-8'>\n" 
                     + "        <title>Develop Store: Registro</title>\n"
