@@ -1,4 +1,6 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page import="mx.com.develop.store.model.Producto"%>
+<%@page import="java.util.List"%>
 
 <!DOCTYPE html>
 <html>
@@ -22,9 +24,8 @@
                 <td>
                     <table>
                         <tr>
-
                             <td>Usuario: </td>
-                            <td><%= request.getParameter("usuario") %></td>
+                            <td><%= request.getAttribute("usuario") %></td>
                         </tr>
                     </table>
                 </td> 
@@ -46,61 +47,26 @@
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td>1</td>
-                    <td>Playera con estampado de Disney.</td>
-                    <td>Playera</td>
-                    <td>Rojo</td>
-                    <td>CHICA</td>
-                    <td>$167.5</td>
+                <%
+                    List<Producto> productos = (List<Producto>) 
+                            request.getAttribute("productos");
+                    int i = 0;
+                    for (Producto producto : productos) {
+                        i++;
+                %>
+                <tr id="td">
+                    <td><%= i%></td>
+                    <td><%= producto.getDescripcion()%></td>
+                    <td><%= producto.getTipo().getTitulo()%></td>
+                    <td><%= producto.getColor().getTitulo()%></td>
+                    <td><%= producto.getTalla()%></td>
+                    <td>$<%= producto.getPrecio()%></td>
                     <td></td>
-                    <td><img src="imagenes/carrito.png" width="40" height="40" alt="carrito"/>
+                    <td><img src="imagenes/carrito.png" width="50" 
+                             height="50" alt="carrito"/>
                     </td>
                 </tr>
-                <tr>
-                    <td>2</td>
-                    <td>Pantalón de mezclilla.</td>
-                    <td>Pantalon</td>
-                    <td>Azul</td>
-                    <td>GRANDE</td>
-                    <td>$199.99</td>
-                    <td></td>
-                    <td><img src="imagenes/carrito.png" width="40" height="40" alt="carrito"/>
-                    </td>
-                </tr>
-                <tr >
-                    <td>3</td>
-                    <td>Blusa morada con cuello V.</td>
-                    <td>Blusa</td>
-                    <td>Morado</td>
-                    <td>MEDIANA</td>
-                    <td>$257.99</td>
-                    <td></td>
-                    <td><img src="imagenes/carrito.png" width="40" height="40" alt="carrito"/>
-                    </td>
-                </tr>
-                <tr >
-                    <td>4</td>
-                    <td>Camisa con boton premium.</td>
-                    <td>Pantalón</td>
-                    <td>Café</td>
-                    <td>GRANDE</td>
-                    <td>$174.5</td>
-                    <td></td>
-                    <td><img src="imagenes/carrito.png" width="40" height="40" alt="carrito"/>
-                    </td>
-                </tr>
-                <tr >
-                    <td>5</td>
-                    <td>Playera para caballero con estampado de Dinosaurio.</td>
-                    <td>Playera</td>
-                    <td>Negro</td>
-                    <td>EXTRA_GRANDE</td>
-                    <td>$480.99</td>
-                    <td></td>
-                    <td><img src="imagenes/carrito.png" width="40" height="40" alt="carrito"/>
-                    </td>
-                </tr>
+                <%}%>
             </tbody>
         </table>
     </body>
