@@ -1,9 +1,8 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<!DOCTYPE html>
 
+<!DOCTYPE html>
 <html>
     <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Develop Store: Registro</title>
     </head>
     <body>
@@ -15,12 +14,12 @@
             </tr> 
             <tr align='right'> 
                 <td>
-                    <b>Usted está aquí:</b> <a href="index.html">Inicio</a>/Registro 
+                    <b>Usted esta aqui:</b> <a href="index.html">Inicio</a>/Registro Cliente
                 </td> 
             </tr> 
         </table>
-        
-        <form action="Registro.do" method="POST">
+
+        <form action="registro_cliente.do" method="POST">
             <table border="0">
                 <tr>
                     <td>Nombre: </td>
@@ -31,11 +30,11 @@
                     <td><input type="text" name="edad" value="" size="3" /></td>
                 </tr>
                 <tr>
-                    <td>Dirección: </td>
+                    <td>Direccion: </td>
                     <td><input type="text" name="direccion" value="" size="40" /></td>
                 </tr>
                 <tr>
-                    <td>Teléfono: </td>
+                    <td>Telefono: </td>
                     <td><input type="text" name="telefono" value="" size="15" /></td>
                 </tr>
                 <tr>
@@ -43,23 +42,24 @@
                     <td><input type="text" name="usuario" value="" size="20" /></td>
                 </tr>
                 <tr>
-                    <td>Contraseña: </td>
-                    <td><input type="password" name="contrasenia" value="" size="20" /></td>
+                    <td>Contrasena: </td>
+                    <td><input type="password" name="contrasena" value="" size="20" /></td>
                 </tr>
                 <%
-                    int aleatorio = ((int) (Math.random() * (3 - 1 + 1) + 1));
+                int aleatorio = ((int) (Math.random() * (3 - 1 + 1) + 1));
                 %>
                 <tr>
                     <td>
-                        <img src="imagenes/<%= aleatorio + ".png"%>" /> 
+                        <img src="imagenes/<%=aleatorio%>.png" width="137" height="56" alt="1"/>
                     </td>
-                    <td>Escribe el texto de la imagen.<br/>
-                        <input type="text" name='captcha' size="20">
+                    <td>
+                        Escribe el texto de la imagen.<br/>
+                        <input type='text' name='captcha' value='' size='20' />
                     </td>
                 </tr>
             </table>
             <br>
-            <input type="submit" value="Registrarse" name="submit" />
+            <input type="submit" value="Registrarse" />
         </form>
     </body>
 </html>
