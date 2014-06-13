@@ -50,7 +50,7 @@
                 %>
                 <tr>
                     <td>
-                        <img src="imagenes/<%=aleatorio%>.png" width="137" height="56" alt="1"/>
+                        <img src="captcha.img" width="137" height="56" alt="1"/>
                     </td>
                     <td>
                         Escribe el texto de la imagen.<br/>
