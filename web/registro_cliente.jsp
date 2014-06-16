@@ -45,9 +45,6 @@
                     <td>Contrasena: </td>
                     <td><input type="password" name="contrasena" value="" size="20" /></td>
                 </tr>
-                <%
-                int aleatorio = ((int) (Math.random() * (3 - 1 + 1) + 1));
-                %>
                 <tr>
                     <td>
                         <img src="captcha.img" width="137" height="56" alt="1"/>
