@@ -6,17 +6,17 @@
         <title>Develop Store: Registro</title>
     </head>
     <body>
-        <table border='0' cellpadding='5' cellspacing='0' width='800'> 
-            <tr bgcolor='#3882C7' align='center' valign='center' height='20'> 
+        <table border='0' cellpadding='5' cellspacing='0' width='800'>
+            <tr bgcolor='#3882C7' align='center' valign='center' height='20'>
                 <td>
                     <h3><font color="white">Develop Store: Registro de clientes.</h3>
-                </td> 
-            </tr> 
-            <tr align='right'> 
+                </td>
+            </tr>
+            <tr align='right'>
                 <td>
                     <b>Usted esta aqui:</b> <a href="index.html">Inicio</a>/Registro Cliente
-                </td> 
-            </tr> 
+                </td>
+            </tr>
         </table>
 
         <form action="registro_cliente.do" method="POST">
@@ -47,7 +47,7 @@
                 </tr>
                 <tr>
                     <td>
-                        <img src="captcha.img" width="137" height="56" alt="1"/>
+                        <img src="captcha.jpg" width="137" height="56" alt="1"/>
                     </td>
                     <td>
                         Escribe el texto de la imagen.<br/>

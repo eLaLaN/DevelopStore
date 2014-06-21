@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<web-app version="3.0" xmlns="http://java.sun.com/xml/ns/javaee" 
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
-         xsi:schemaLocation="http://java.sun.com/xml/ns/javaee 
+<!--web-app metadata-complete="true"... ignora las anotaciones para toda la app -->
+<web-app version="3.0" xmlns="http://java.sun.com/xml/ns/javaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://java.sun.com/xml/ns/javaee
         http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd">
-    <!--servlet>        
+    <!--servlet>
         <servlet-name>
             RegistroCliente
         </servlet-name>
@@ -11,16 +12,43 @@
             mx.com.develop.store.controller.RegistroCliente
         </servlet-class>
     </servlet>
-    
+
     <servlet-mapping>
         <servlet-name>
             RegistroCliente
         </servlet-name>
         <url-pattern>
             /registro_cliente.view
-        </url-pattern>        
+        </url-pattern>
     </servlet-mapping-->
-    
+
+    <!--
+        Prioridad...
+        1. web.xml
+        2. web-fragment.xml
+        3. @annotations
+    -->
+    <servlet>
+        <servlet-name>
+            Captcha
+        </servlet-name>
+        <servlet-class>
+            mx.com.develop.store.controller.Captcha
+        </servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>
+            Captcha
+        </servlet-name>
+        <url-pattern>
+            /captcha.jpg
+        </url-pattern>
+        <url-pattern>
+            /captcha.view
+        </url-pattern>
+    </servlet-mapping>
+
     <session-config>
         <session-timeout>
             30
