@@ -1,7 +1,5 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
-<%@page import="mx.com.develop.store.model.Cliente"%>
-
 <!DOCTYPE html>
 <html>
     <head>
@@ -21,12 +19,7 @@
             </tr>
         </table>
 
-        <p>Te has registrado de manera satisfactoria abjo la siguiente informacion</p>
-        <b>Nombre:</b><%= ((Cliente) request.getAttribute("cliente")).getNombre()%><br/>
-        <b>Edad:</b>${cliente.edad}<br/>
-        <b>Direccion:</b>${cliente.direccion}<br/>
-        <b>Telefono:</b>${cliente.telefono}<br/>
-        <b>Usuario:</b>${cliente.usuario}<br/>
-        <b>Contrasena:</b>${cliente.contrasena}<br/>
+        <font color="red"><p>Error al registar el cliente<p/></font>
+        <a href="registro_cliente.jsp">Regresar...</a>
     </body>
 </html>

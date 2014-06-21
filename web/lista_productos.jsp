@@ -1,4 +1,5 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+
 <%@page import="java.util.List" %>
 <%@page import="mx.com.develop.store.model.Producto" %>
 
@@ -7,19 +8,19 @@
     <head>
         <title>Develop Store: Listado de Productos</title>
         <style type="text/css">
-            #table { 
-                border-collapse: collapse; 
+            #table {
+                border-collapse: collapse;
             }
         </style>
     </head>
     <body>
-        <table border='0' cellpadding='5' cellspacing='0' width='800'> 
-            <tr bgcolor='#3882C7' align='center' valign='center' height='20'> 
+        <table border='0' cellpadding='5' cellspacing='0' width='800'>
+            <tr bgcolor='#3882C7' align='center' valign='center' height='20'>
                 <td>
                     <h3><font color="white">Develop Store: Listado de Productos</h3>
-                </td> 
-            </tr> 
-            <tr align='right'> 
+                </td>
+            </tr>
+            <tr align='right'>
                 <td>
                     <table>
                         <tr>
@@ -29,10 +30,10 @@
                             <td>${usuario}</td>
                         </tr>
                     </table>
-                </td> 
-            </tr> 
+                </td>
+            </tr>
         </table>
-        <b>Usted esta aqui:</b> <a href="index.html">Inicio</a>/Listado de Productos        
+        <b>Usted esta aqui:</b> <a href="index.html">Inicio</a>/Listado de Productos
         <h2>Lista de Productos:</h2>
         <table border="1" width="800" id="table">
             <thead>
@@ -49,8 +50,9 @@
             </thead>
             <tbody>
                 <%
-                List<Producto> productos = (List<Producto>)request.getAttribute("productos");
-                for (Producto producto : productos) {
+                    if (request.getAttribute("productos") != null) {
+                        List<Producto> productos = (List<Producto>) request.getAttribute("productos");
+                        for (Producto producto : productos) {
                 %>
                 <tr>
                     <td><%=producto.getId()%></td>
@@ -62,7 +64,8 @@
                     <td><img src="imagenes/carrito.png" width="40" height="40"/></td>
                     <td></td>
                 </tr>
-                <% } %>
+                <%      }
+                    }%>
             </tbody>
         </table>
     </body>

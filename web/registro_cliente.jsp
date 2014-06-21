@@ -19,10 +19,11 @@
             </tr>
         </table>
 
+        <p>Los campos marcados con * son obligatorios:</p>
         <form action="registro_cliente.do" method="POST">
             <table border="0">
                 <tr>
-                    <td>Nombre: </td>
+                    <td><sup>*</sup>Nombre: </td>
                     <td><input type="text" name="nombre" value="" size="20" /></td>
                 </tr>
                 <tr>
@@ -38,11 +39,11 @@
                     <td><input type="text" name="telefono" value="" size="15" /></td>
                 </tr>
                 <tr>
-                    <td>Usuario: </td>
+                    <td><sup>*</sup>Usuario: </td>
                     <td><input type="text" name="usuario" value="" size="20" /></td>
                 </tr>
                 <tr>
-                    <td>Contrasena: </td>
+                    <td><sup>*</sup>Contrasena: </td>
                     <td><input type="password" name="contrasena" value="" size="20" /></td>
                 </tr>
                 <tr>

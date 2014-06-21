@@ -4,47 +4,64 @@ import java.io.IOException;
 import java.util.Enumeration;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletConfig;
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import mx.com.develop.store.model.Cliente;
+import org.apache.commons.lang3.StringUtils;
 
-@WebServlet(name = "RegistroCliente", urlPatterns = {"/registro_cliente.do"})
+//@WebServlet(name = "RegistroCliente", urlPatterns = {"/registro_cliente.do"})
 public class RegistroCliente extends HttpServlet {
+
+    public RegistroCliente(String arg) {
+        System.out.println("new RegistroCliente(String)");
+    }
+
+    // 1. Container crea la instancia
+    public RegistroCliente() {
+        System.out.println("new RegistroCliente()");
+    }
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String nombre = request.getParameter("nombre");
-        int edad = 9999;
-        try {
-            edad = Integer.parseInt(request.getParameter("edad"));
-        } catch (Exception ex) {
+        String captcha = request.getParameter("captcha");
+
+        ServletContext context
+                = //this.getServletContext();
+                //request.getServletContext();
+                this.getServletConfig().getServletContext();
+
+        boolean captchaError = true;
+        Enumeration<String> captchaValues = context.getInitParameterNames();
+        while (captchaValues.hasMoreElements()) {
+            String captchaValue = captchaValues.nextElement();
+            if (captcha.equals(context.getInitParameter(captchaValue))) {
+                captchaError = false;
+            }
         }
+
+        String nombre = request.getParameter("nombre");
+        String edad = request.getParameter("edad");
         String direccion = request.getParameter("direccion");
         String telefono = request.getParameter("telefono");
         String usuario = request.getParameter("usuario");
         String contrasena = request.getParameter("contrasena");
 
-        Cliente cliente = new Cliente(nombre, edad, direccion, usuario, contrasena, telefono);
+        if (captchaError
+                || StringUtils.isBlank(nombre) || StringUtils.isBlank(usuario) || StringUtils.isBlank(contrasena)) {
+            response.sendRedirect("registro_cliente_error.jsp");
+        } else {
+            Cliente cliente = new Cliente(nombre, edad, direccion, usuario, contrasena, telefono);
 
-        request.setAttribute("cliente", cliente);
+            request.setAttribute("cliente", cliente);
 
-        RequestDispatcher dispatcher = request.getRequestDispatcher("registro_cliente_success.jsp");
-        dispatcher.forward(request, response);
-
-    }
-
-    public RegistroCliente(String arg) {
-        System.out.println("Hola Mundo con argumentos!!!");
-    }
-
-    // 1. Container crea la instancia
-    public RegistroCliente() {
-        System.out.println("Hola Mundo!!!");
+            RequestDispatcher dispatcher = request.getRequestDispatcher("registro_cliente_success.jsp");
+            dispatcher.forward(request, response);
+        }
     }
 
     // 2. Container llama metodo init(ServletConfig)
@@ -77,9 +94,7 @@ public class RegistroCliente extends HttpServlet {
         //Opcion 1.
         //super.service(request, response);
         //Opcion 2.
-        doPost(request, response);
-
-        //Opcion 3.
+        //doPost(request, response);
         System.out.println("Informacion del Request: ");
         System.out.println("Protocol: " + request.getProtocol());
 
@@ -97,6 +112,7 @@ public class RegistroCliente extends HttpServlet {
             System.out.println(headerName + ": " + request.getHeader(headerName));
         }
 
+        //Opcion 3.
         switch (request.getMethod()) {
             case "POST":
                 doPost(request, response);

@@ -2,7 +2,7 @@ package mx.com.develop.store.model;
 
 public class Cliente {
 
-    public Cliente(String nombre, int edad, String direccion, String usuario, String contrasena, String telefono) {
+    public Cliente(String nombre, String edad, String direccion, String usuario, String contrasena, String telefono) {
         this.nombre = nombre;
         this.edad = edad;
         this.direccion = direccion;
@@ -12,7 +12,7 @@ public class Cliente {
     }
 
     private String nombre;
-    private int edad;
+    private String edad;
     private String direccion;
     private String usuario;
     private String contrasena;
@@ -34,11 +34,11 @@ public class Cliente {
         this.nombre = nombre;
     }
 
-    public int getEdad() {
+    public String getEdad() {
         return edad;
     }
 
-    public void setEdad(int edad) {
+    public void setEdad(String edad) {
         this.edad = edad;
     }
 
