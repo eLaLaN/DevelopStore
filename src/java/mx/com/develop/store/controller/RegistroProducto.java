@@ -26,6 +26,7 @@ public class RegistroProducto extends HttpServlet {
         Talla talla = null;
         String descripcion;
         TipoProducto tipo = null;
+        int disponibles = 0;
 
         ServletContext context = this.getServletContext();
         List<Producto> productos = (List<Producto>) context.getAttribute("productos");
@@ -55,16 +56,29 @@ public class RegistroProducto extends HttpServlet {
         } catch (IllegalArgumentException e) {
             listaErrores.add("Debes seleccionar el 'Tipo' del producto, es un campo obligatorio.");
         }
+        try {
+            disponibles = Integer.valueOf(request.getParameter("disponibles"));
+        } catch (NumberFormatException ex) {
+            listaErrores.add("Numero de productos disponibles deber ser entero.");
+        }
 
         if (listaErrores.isEmpty()) {
-            Producto producto = new Producto(productos.size() + 1, color, precio, talla, descripcion, tipo);
+            Producto producto = new Producto(productos.size() + 1, color, precio, talla, descripcion, tipo, disponibles);
             productos.add(producto);
             request.setAttribute("producto", producto);
-            RequestDispatcher rd = request.getRequestDispatcher("registro_producto_success.jsp");
+            RequestDispatcher rd = //request.getRequestDispatcher("registro_producto_success.jsp");
+                    context.getRequestDispatcher("/admin/registro_producto_success.jsp");
+
             rd.forward(request, response);
         } else {
             request.setAttribute("listaErrores", listaErrores);
-            RequestDispatcher rd = request.getRequestDispatcher("registro_producto_error.jsp");
+            RequestDispatcher rd
+                    = //RequestDispatcher del request sustituye la pagina actual por la declarada en getRequestDispatcher()
+                    // y preserva el path - request.getRequestDispatcher("registro_producto_error.jsp");
+                    //
+                    //RequestDispatcher del servletContext elimna todo lo que despues del ContextPath y su getRequestDispatcher()
+                    //debe de iniciar con "/" y el path del dipatch debe ser completo
+                    context.getRequestDispatcher("/admin/registro_producto_error.jsp");
             rd.forward(request, response);
         }
     }

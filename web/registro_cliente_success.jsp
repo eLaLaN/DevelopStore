@@ -25,7 +25,7 @@
         <b>Nombre:</b><%= ((Cliente) request.getAttribute("cliente")).getNombre()%><br/>
         <b>Edad:</b>${cliente.edad}<br/>
         <b>Direccion:</b>${cliente.direccion}<br/>
-        <b>Telefono:</b>${cliente.telefono}<br/>
+        <b>Telefono:</b>${cliente["telefono"]}<br/>
         <b>Usuario:</b>${cliente.usuario}<br/>
         <b>Contrasena:</b>${cliente.contrasena}<br/>
     </body>

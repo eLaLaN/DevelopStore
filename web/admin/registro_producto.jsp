@@ -4,6 +4,7 @@
 <%@page import="mx.com.develop.store.model.Talla"%>
 <%@page import="mx.com.develop.store.model.Color"%>
 
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -84,6 +85,11 @@
                             <%}%>
                         </select>
                     </td>
+                </tr>
+                <tr>
+                    <td><sup>*</sup>Disponibles</td>
+                    <td>
+                    <td><input type="text" name="disponibles"/></td>
                 </tr>
                 <tr>
                     <td></td>

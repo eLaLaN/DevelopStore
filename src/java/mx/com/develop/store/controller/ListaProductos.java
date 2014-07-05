@@ -9,7 +9,6 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import mx.com.develop.store.model.Color;
 import mx.com.develop.store.model.Producto;
 import mx.com.develop.store.model.Talla;
 import mx.com.develop.store.model.TipoProducto;
@@ -25,9 +24,9 @@ public class ListaProductos extends HttpServlet {
             List<Producto> productos = (List<Producto>) this.getServletContext().getAttribute("productos");
             request.setAttribute("productos", productos);
 
-            String usuario = "Bruce 'Atributo' Wayne";
-            request.setAttribute("usuario", usuario);
-
+            //Remplazado por el objeto clientes que se encuentra en session
+            //String usuario = "Bruce 'Atributo' Wayne";
+            //request.setAttribute("usuario", usuario);
             dispatcher = request.getRequestDispatcher("lista_productos.jsp");
         } else {
             //dispatcher = request.getRequestDispatcher("/ayuda");

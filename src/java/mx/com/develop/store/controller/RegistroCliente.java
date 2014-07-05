@@ -1,7 +1,9 @@
 package mx.com.develop.store.controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Enumeration;
+import java.util.List;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletContext;
@@ -12,6 +14,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import mx.com.develop.store.model.Cliente;
+import mx.com.develop.store.model.Producto;
 import org.apache.commons.lang3.StringUtils;
 
 //@WebServlet(name = "RegistroCliente", urlPatterns = {"/registro_cliente.do"})
@@ -35,6 +38,12 @@ public class RegistroCliente extends HttpServlet {
                 //request.getServletContext();
                 this.getServletConfig().getServletContext();
 
+        List<Cliente> clientes = (List<Cliente>) context.getAttribute("clientes");
+        if (clientes == null) {
+            clientes = new ArrayList<Cliente>();
+            context.setAttribute("clientes", clientes);
+        }
+
         boolean captchaError = true;
         Enumeration<String> captchaValues = context.getInitParameterNames();
         while (captchaValues.hasMoreElements()) {
@@ -56,7 +65,7 @@ public class RegistroCliente extends HttpServlet {
             response.sendRedirect("registro_cliente_error.jsp");
         } else {
             Cliente cliente = new Cliente(nombre, edad, direccion, usuario, contrasena, telefono);
-
+            clientes.add(cliente);
             request.setAttribute("cliente", cliente);
 
             RequestDispatcher dispatcher = request.getRequestDispatcher("registro_cliente_success.jsp");

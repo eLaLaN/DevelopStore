@@ -27,7 +27,17 @@
 
                             <td>Usuario: </td>
                             <%--<td><%= request.getAttribute("usuario") %></td>--%>
-                            <td>${usuario}</td>
+                            <!--td>${sessionScope.cliente.nombre}</td-->
+                            <td>
+                                <% Cookie cookies[] = request.getCookies();
+                                    for (Cookie cookie : cookies) {
+                                        if (cookie.getName().equalsIgnoreCase("nombreCliente")) {
+                                            out.print(cookie.getValue());
+                                            break;
+                                        }
+                                    }
+                                %>
+                            </td>
                         </tr>
                     </table>
                 </td>
@@ -49,8 +59,7 @@
                 </tr>
             </thead>
             <tbody>
-                <%
-                    if (request.getAttribute("productos") != null) {
+                <%                    if (request.getAttribute("productos") != null) {
                         List<Producto> productos = (List<Producto>) request.getAttribute("productos");
                         for (Producto producto : productos) {
                 %>
@@ -61,8 +70,12 @@
                     <td><%=producto.getColor().getTitulo()%></td>
                     <td><%=producto.getTalla()%></td>
                     <td><%=producto.getPrecio()%></td>
-                    <td><img src="imagenes/carrito.png" width="40" height="40"/></td>
-                    <td></td>
+                    <td><%=producto.getDisponibles()%></td>
+                    <td>
+                        <a href="<%= response.encodeRedirectURL("ventas/detalles_producto.view?id=" + producto.getId())%>">
+                            <img src="imagenes/carrito.png" width="40" height="40"/>
+                        </a>
+                    </td>
                 </tr>
                 <%      }
                     }%>
