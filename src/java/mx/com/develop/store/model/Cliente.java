@@ -2,6 +2,9 @@ package mx.com.develop.store.model;
 
 public class Cliente {
 
+    public Cliente() {
+    }
+
     public Cliente(String nombre, String edad, String direccion, String usuario, String contrasena, String telefono) {
         this.nombre = nombre;
         this.edad = edad;

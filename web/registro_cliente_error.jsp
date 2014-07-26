@@ -14,7 +14,7 @@
             </tr>
             <tr align='right'>
                 <td>
-                    <b>Usted esta aqui:</b>&nbsp;<a href="index.html">Inicio</a>/Registro Cliente
+                    <b>Usted esta aqui:</b>&nbsp;<a href="index.jsp">Inicio</a>/Registro Cliente
                 </td>
             </tr>
         </table>

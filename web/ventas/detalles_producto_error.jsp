@@ -21,6 +21,6 @@
             </tr>
         </table>
         <font color="red"><p>El producto solicitado no está en existencia, o usted no es un cliente <a href="../registro_cliente.jsp">registrado</a> en nuestra tienda.<p></font>
-            <a href="../index.html">Inicio</a>
+            <a href="../index.jsp">Inicio</a>
     </body>
 </html>

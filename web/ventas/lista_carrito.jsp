@@ -37,7 +37,7 @@
                 </td>
             </tr>
         </table>
-        <b>Usted está aquí:</b> <a href="../index.html">Inicio</a>/Carrito de compras
+        <b>Usted está aquí:</b> <a href="../index.jsp">Inicio</a>/Carrito de compras
         de Productos
         <h2>Lista de Productos:</h2>
         <table border="1" width="800" id="table">
@@ -83,6 +83,6 @@
             </tbody>
         </table>
         <p> <a href="../lista_productos.view">Seguir comprando</a></p>
-        <p> <a href="">Completar compra.</a></p>
+        <p> <a href="completar_compra.do">Completar compra.</a></p>
     </body>
 </html>

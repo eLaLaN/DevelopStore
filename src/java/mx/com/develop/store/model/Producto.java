@@ -13,6 +13,10 @@ public class Producto {
     public Producto() {
     }
 
+    public int getDisponiblesPorAca() {
+        return disponibles;
+    }
+
     public Producto(Integer id, Color color, double precio, Talla talla,
             String descripcion, TipoProducto tipo, int disponibles) {
         this.id = id;
@@ -22,6 +26,19 @@ public class Producto {
         this.descripcion = descripcion;
         this.tipo = tipo;
         this.disponibles = disponibles;
+    }
+
+    @Override
+    public Producto clone() {
+        Producto producto = new Producto();
+        producto.id = id;
+        producto.color = color;
+        producto.descripcion = descripcion;
+        producto.disponibles = disponibles;
+        producto.precio = precio;
+        producto.talla = talla;
+        producto.tipo = tipo;
+        return producto;
     }
 
     public TipoProducto getTipo() {

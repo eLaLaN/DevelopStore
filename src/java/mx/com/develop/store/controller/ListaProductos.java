@@ -2,6 +2,8 @@ package mx.com.develop.store.controller;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -22,7 +24,12 @@ public class ListaProductos extends HttpServlet {
         RequestDispatcher dispatcher;
         if (true) { //esta autenticado?
             List<Producto> productos = (List<Producto>) this.getServletContext().getAttribute("productos");
+            productos = Arrays.asList(productos.toArray(new Producto[0]));
             request.setAttribute("productos", productos);
+
+            Producto producto = productos.get(0).clone();
+            producto.setDisponibles(producto.getDisponibles() - 1);
+            productos.set(0, producto);
 
             //Remplazado por el objeto clientes que se encuentra en session
             //String usuario = "Bruce 'Atributo' Wayne";

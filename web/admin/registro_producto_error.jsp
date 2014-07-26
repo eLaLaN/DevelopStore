@@ -27,7 +27,7 @@
                 </td>
             </tr>
         </table>
-        <b>Usted está aquí:</b>&nbsp;<a href="../index.html">Inicio</a>/Admin/Registro Producto
+        <b>Usted está aquí:</b>&nbsp;<a href="../index.jsp">Inicio</a>/Admin/Registro Producto
         <h3>Corrige los siguientes errores:</h3>
         <% List<String> listaErrores = (List<String>) request.getAttribute("listaErrores");%>
         <font color="red">

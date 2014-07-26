@@ -14,7 +14,7 @@
             </tr>
             <tr align='right'>
                 <td>
-                    <b>Usted esta aqui:</b> <a href="index.html">Inicio</a> /Error al iniciar sesion
+                    <b>Usted esta aqui:</b> <a href="index.jsp">Inicio</a> /Error al iniciar sesion
                 </td>
             </tr>
         </table>

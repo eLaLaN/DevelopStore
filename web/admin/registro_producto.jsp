@@ -30,7 +30,7 @@
                 </td>
             </tr>
         </table>
-        <b>Usted está aquí:</b>&nbsp;<a href="../index.html">Inicio</a>/Admin/Registro Productos
+        <b>Usted está aquí:</b>&nbsp;<a href="../index.jsp">Inicio</a>/Admin/Registro Productos
         <p>Los campos marcados con <sup>*</sup> son obligatorios:</p>
         <form method="POST" action="registro_producto.do">
             <table border="0">
