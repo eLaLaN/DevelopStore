@@ -6,7 +6,7 @@ public class CalcularFactura {
         return total / 1.16;
     }
 
-    public static double iva(double total) {
+    public static double IVA(double total) {
         return total - subTotal(total);
     }
 }

@@ -1,4 +1,6 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@taglib prefix="mytags" uri="http://curso.develop.uaa.mx/5d" %>
+<%--@taglib prefix="mytags" tagdir="/WEB-INF/tags"--%>
 
 <!DOCTYPE html>
 <html>
@@ -6,18 +8,7 @@
         <title>Develop Store: Registro</title>
     </head>
     <body>
-        <table border='0' cellpadding='5' cellspacing='0' width='800'>
-            <tr bgcolor='#3882C7' align='center' valign='center' height='20'>
-                <td>
-                    <h3><font color="white">Develop Store: Registro de clientes.</h3>
-                </td>
-            </tr>
-            <tr align='right'>
-                <td>
-                    <b>Usted esta aqui:</b> <a href="index.jsp">Inicio</a>/Registro Cliente
-                </td>
-            </tr>
-        </table>
+        <mytags:header titulo="Registro Cliente"/>
 
         <p>Los campos marcados con * son obligatorios:</p>
         <form action="registro_cliente.do" method="POST">
