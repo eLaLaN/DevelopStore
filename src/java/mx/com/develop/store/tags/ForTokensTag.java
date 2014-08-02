@@ -15,10 +15,16 @@ public class ForTokensTag extends BodyTagSupport {
     @Override
     public int doStartTag() throws JspException {
         tokens = items.split(delim);
+
+        //pageContext.setAttribute("cupon", valor);
+        pageContext.setAttribute(var, tokens[index]);
+        index++;
+
         // return SKIP_BODY; << Default return
         return EVAL_BODY_INCLUDE;
     }
 
+    /* Algo parecido a getJspBody().invoke();  */
     @Override
     public int doAfterBody() throws JspException {
         if (index < tokens.length) {

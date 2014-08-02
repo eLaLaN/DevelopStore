@@ -30,8 +30,10 @@
         <h3>Tu producto ha sido registrado satisfactoriamente:</h3>
         <b>Color:</b> ${producto.color.titulo}</br>
         <b>Precio:</b> ${producto.precio}</br>
-        <b>Talla:</b> ${ producto.talla}</br>
-        <b>Descripcion:</b> ${roducto.descripcion}</br>
+        <b>Talla:</b> ${producto.talla}</br>
+        <b>Descripcion:</b> ${producto.descripcion}</br>
         <b>Tipo:</b> ${producto.tipo.titulo}</br>
+
+        <img src="prodImages/${producto.id}.png">
     </body>
 </html>

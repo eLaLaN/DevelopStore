@@ -35,21 +35,18 @@
                 </tr>
             </thead>
             <tbody>
-                <c:if test="${fn:length(applicationScope.productos) gt 0}">
+                <c:if test="${fn:length(productos) gt 0}">
                     <tr>
-                        <%-- los cuatro primeros campos se sacan de productos del scope de request --%>
-                        <td>${requestScope.productos[0]["id"]}</td>
+                        <td>${productos[0]["id"]}</td>
                         <td>${requestScope.productos[0]["descripcion"]}</td>
                         <td>${requestScope["productos"][0]["tipo"].titulo}</td>
                         <td>${requestScope["productos"][0]["color"]["titulo"]}</td>
-                        <%-- los siguientes tres campos se sacan de productos del scope de application --%>
-                        <td>${applicationScope["productos"][0].talla}</td>
-                        <td>$${applicationScope.productos[0].precio}</td>
-                        <td>${applicationScope.productos[0].disponiblesPorAca}</td>
+                        <td>${requestScope["productos"][0].talla}</td>
+                        <td><mytag:formatCurrency moneda="${productos[0].precio}"/></td>
+                        <td>${productos[0].disponiblesPorAca}</td>
 
                         <td>
                             <c:url var="detallesProducto" value="ventas/detalles_producto.view">
-                                <%-- si no se define ningun scope, a que productos se hace referencia? Orden de busqueda Page>>Request>>Session>>Application --%>
                                 <c:param name="id" value="${productos[0].id}"/>
                             </c:url>
                             <a href="${detallesProducto}">

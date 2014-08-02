@@ -31,7 +31,7 @@
         </table>
         <b>Usted está aquí:</b>&nbsp;<a href="../index.jsp">Inicio</a>/Admin/Registro Productos
         <p>Los campos marcados con <sup>*</sup> son obligatorios:</p>
-        <form method="POST" action="registro_producto.do">
+        <form method="POST" action="registro_producto.do" enctype="multipart/form-data" accept="image/*">
             <table border="0">
                 <tr>
                     <td><sup>*</sup>Color:</td>
@@ -88,6 +88,10 @@
                 <tr>
                     <td><sup>*</sup>Disponibles:</td>
                     <td><input type="text" name="disponibles"/></td>
+                </tr>
+                <tr>
+                    <td>Imagen:</td>
+                    <td><input type="file" name="imagen"/></td>
                 </tr>
                 <tr>
                     <td></td>

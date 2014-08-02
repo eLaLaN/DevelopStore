@@ -22,43 +22,39 @@ public class CompletarCompra extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         HttpSession session = request.getSession(false);
-        ServletContext context = getServletContext();
 
-        if (session != null) {
-            Venta venta = (Venta) session.getAttribute("venta");
-            if (venta != null) {
-                Map<Producto, Integer> productos = venta.getProductos();
-                double total = 0.0;
-                Set<Producto> set = productos.keySet();
-                for (Producto producto : set) {
-                    total += producto.getPrecio() * productos.get(producto);
-                }
-                //Cupones de descuento.
-                //Vaciar el crrito de compras.
-                session.removeAttribute("venta");
-
-                //Cupones de descuento.
-                String cupones = "fHue274, HhsdE78, jads87";
-                //Vaciar el crrito de compras.
-                session.removeAttribute("venta");
-                //Compartir los productos del carrito, los cupones y el total de la compra.
-                request.setAttribute("cupones", cupones);
-
-                //Compartir los productos del carrito, los cupones y el total de la compra.
-                request.setAttribute("venta", venta);
-                request.setAttribute("total", total);
-
-                Factura factura = new Factura();
-                factura.setCliente(new Cliente());
-                //request.setAttribute("factura", factura);
-
-                request.getRequestDispatcher("completar_compra.jsp").forward(request, response);
-            } else {
-                venta = new Venta();
-                response.sendRedirect("lista_carrito_error.jsp");
+        Venta venta = (Venta) session.getAttribute("venta");
+        if (venta != null) {
+            Map<Producto, Integer> productos = venta.getProductos();
+            double total = 0.0;
+            Set<Producto> set = productos.keySet();
+            for (Producto producto : set) {
+                total += producto.getPrecio() * productos.get(producto);
             }
+            //Cupones de descuento.
+            //Vaciar el crrito de compras.
+            session.removeAttribute("venta");
+
+            //Cupones de descuento.
+            String cupones = "fHue274, HhsdE78, jads87";
+            //Vaciar el crrito de compras.
+            session.removeAttribute("venta");
+            //Compartir los productos del carrito, los cupones y el total de la compra.
+            request.setAttribute("cupones", cupones);
+
+            //Compartir los productos del carrito, los cupones y el total de la compra.
+            request.setAttribute("venta", venta);
+            request.setAttribute("total", total);
+
+            Factura factura = new Factura();
+            factura.setCliente(new Cliente());
+            //request.setAttribute("factura", factura);
+
+            request.getRequestDispatcher("completar_compra.jsp").forward(request, response);
         } else {
+            venta = new Venta();
             response.sendRedirect("lista_carrito_error.jsp");
         }
+
     }
 }
