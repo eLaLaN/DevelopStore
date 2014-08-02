@@ -23,8 +23,7 @@
                     <table>
                         <tr>
                             <td>Usuario: </td>
-                            <%--<td><%= request.getAttribute("usuario") %></td>--%>
-                            <td>${usuario}</td>
+                            <td>${cliente.nombre}</td>
                         </tr>
                     </table>
                 </td>
@@ -87,8 +86,7 @@
                     </td>
                 </tr>
                 <tr>
-                    <td><sup>*</sup>Disponibles</td>
-                    <td>
+                    <td><sup>*</sup>Disponibles:</td>
                     <td><input type="text" name="disponibles"/></td>
                 </tr>
                 <tr>

@@ -19,9 +19,8 @@
                 <td>
                     <table>
                         <tr>
-                            <td>Usuario: </td>
-                            <%--<td><%= request.getAttribute("usuario") %></td>--%>
-                            <td>${usuario}</td>
+                            <td>Usuario:</td>
+                            <td>${cliente.nombre}</td>
                         </tr>
                     </table>
                 </td>

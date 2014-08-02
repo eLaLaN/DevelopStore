@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--web-app metadata-complete="true"... ignora las anotaciones para toda la app -->
-<web-app version="3.0" xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee         http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd">
+<web-app version="3.0" xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee                              http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd">
     <!--servlet>
         <servlet-name>
             RegistroCliente
@@ -63,32 +63,28 @@
         <param-name>captcha3</param-name>
         <param-value>dultne</param-value>
     </context-param>
-    
     <session-config>
         <session-timeout>15</session-timeout>
     </session-config>
-
     <error-page>
-        <location>/error/exception.jsp</location>
         <exception-type>java.lang.Exception</exception-type>
+        <location>/error/exception.jsp</location>
     </error-page>
-
     <error-page>
-        <location>/error/404.jsp</location>
         <error-code>404</error-code>
+        <location>/error/404.jsp</location>
     </error-page>
-
     <jsp-config>
-        <jsp-property-group>
+        <!-- For a very weird reason, this affects images as well -->
+        <!--jsp-property-group>
             <url-pattern>/*</url-pattern>
             <scripting-invalid>false</scripting-invalid>
-        </jsp-property-group>
+        </jsp-property-group-->
         <jsp-property-group>
             <url-pattern>/ventas/detalles_producto.jsp</url-pattern>
             <el-ignored>false</el-ignored>
         </jsp-property-group>
     </jsp-config>
-
     <welcome-file-list>
         <welcome-file>index.jsp</welcome-file>
     </welcome-file-list>

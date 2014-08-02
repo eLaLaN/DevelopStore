@@ -1,4 +1,6 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 
 <html>
@@ -29,21 +31,27 @@
         <h2>Bienvenido a DEVELOP Store.</h2>
         <h3>Clientes</h3>
         <ul>
-            <li><a href="lista_productos.view">Ver listado de Productos.</a>
+            <li>
+                <a href="lista_productos.view">Ver listado de Productos.</a>
             </li>
+            <c:if test="${cliente.usuario eq 'admin'}">
+                <li>
+                    <a href="admin/registro_producto.jsp">Registro Producto</a>
+                </li>
+            </c:if>
         </ul>
         <%!
-        private static int numeroVisitas = 0;
-        
-        private int getVisitanteNumero() {
-            return ++numeroVisitas;
-        }
+            private static int numeroVisitas = 0;
+
+            private int getVisitanteNumero() {
+                return ++numeroVisitas;
+            }
         %>
         Visitante numero: <%= this.getVisitanteNumero()%>
-        
+
         <jsp:include page="fecha.jsp">
             <jsp:param name="label" value="Hoy es:"/>
         </jsp:include>
-        
+
     </body>
 </html>

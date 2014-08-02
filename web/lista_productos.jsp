@@ -35,49 +35,55 @@
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td>1</td>
-                    <td>${requestScope.productos[0]["descripcion"]}</td>
-                    <td>${requestScope["productos"][0]["tipo"].titulo}</td>
-                    <td>${requestScope["productos"][0]["color"]["titulo"]}</td>
-                    <td>${applicationScope["productos"][0].talla}</td>
-                    <td>$${applicationScope.productos[0].precio}</td>
-                    <td>${applicationScope.productos[0].disponiblesPorAca}</td>
-                    <td>
-                        <c:url var="detallesProducto" value="ventas/detalles_producto.view">
-                            <c:param name="id" value="${productos[0].id}"/>
-                        </c:url>
-                        <a href="${detallesProducto}">
-                            <img src="imagenes/carrito.png" width="40" height="40"/>
-                        </a>
-                    </td>
-                </tr>
-                <%/* if (request.getAttribute("productos") != null) {
-                     List<Producto> productos = (List<Producto>) request.getAttribute("productos");
-                     for (Producto producto : productos) {
-                     pageContext.setAttribute("producto", producto);
-                     */
-                %>
-                <mytag:forEach items="${productos}" begin="1" varStatus="status">
-                    <jsp:attribute name="var">producto</jsp:attribute>
-                    <jsp:body>
-                        <tr>
-                            <td>${status + 1}</td>
-                            <td>${producto.descripcion}</td>
-                            <td>${producto.tipo.titulo}</td>
-                            <td>${producto.color.titulo}</td>
-                            <td>${producto.talla}</td>
-                            <td><mytag:formatCurrency moneda="${producto.precio}"/></td>
-                            <td>${producto.disponibles}</td>
-                            <td>
-                                <a href="ventas/detalles_producto.view?id=${producto.id}">
-                                    <img src="imagenes/carrito.png" width="40" height="40"/>
-                                </a>
-                            </td>
-                        </tr>
-                    </jsp:body>
-                </mytag:forEach>
-                <% /* } } */%>
+                <c:if test="${fn:length(applicationScope.productos) gt 0}">
+                    <tr>
+                        <%-- los cuatro primeros campos se sacan de productos del scope de request --%>
+                        <td>${requestScope.productos[0]["id"]}</td>
+                        <td>${requestScope.productos[0]["descripcion"]}</td>
+                        <td>${requestScope["productos"][0]["tipo"].titulo}</td>
+                        <td>${requestScope["productos"][0]["color"]["titulo"]}</td>
+                        <%-- los siguientes tres campos se sacan de productos del scope de application --%>
+                        <td>${applicationScope["productos"][0].talla}</td>
+                        <td>$${applicationScope.productos[0].precio}</td>
+                        <td>${applicationScope.productos[0].disponiblesPorAca}</td>
+
+                        <td>
+                            <c:url var="detallesProducto" value="ventas/detalles_producto.view">
+                                <%-- si no se define ningun scope, a que productos se hace referencia? Orden de busqueda Page>>Request>>Session>>Application --%>
+                                <c:param name="id" value="${productos[0].id}"/>
+                            </c:url>
+                            <a href="${detallesProducto}">
+                                <img src="imagenes/carrito.png" width="40" height="40"/>
+                            </a>
+                        </td>
+                    </tr>
+                    <%/* if (request.getAttribute("productos") != null) {
+                         List<Producto> productos = (List<Producto>) request.getAttribute("productos");
+                         for (Producto producto : productos) {
+                         pageContext.setAttribute("producto", producto);
+                         */
+                    %>
+                    <mytag:forEach items="${productos}" begin="1" varStatus="status">
+                        <jsp:attribute name="var">producto</jsp:attribute>
+                        <jsp:body>
+                            <tr>
+                                <td>${status + 1}</td>
+                                <td>${producto.descripcion}</td>
+                                <td>${producto.tipo.titulo}</td>
+                                <td>${producto.color.titulo}</td>
+                                <td>${producto.talla}</td>
+                                <td><mytag:formatCurrency moneda="${producto.precio}"/></td>
+                                <td>${producto.disponibles}</td>
+                                <td>
+                                    <a href="ventas/detalles_producto.view?id=${producto.id}">
+                                        <img src="imagenes/carrito.png" width="40" height="40"/>
+                                    </a>
+                                </td>
+                            </tr>
+                        </jsp:body>
+                    </mytag:forEach>
+                    <% /* } } */%>
+                </c:if>
             </tbody>
         </table>
     </body>
